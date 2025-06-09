@@ -16,7 +16,6 @@ COPY . .
 # Build the production-ready React app
 RUN npm run build
 
-
 # Step 2: Serve using Nginx
 FROM nginx:stable-alpine
 
@@ -25,9 +24,6 @@ RUN rm -rf /usr/share/nginx/html/*
 
 # Copy build output from previous step
 COPY --from=builder /app/build /usr/share/nginx/html
-
-# Copy custom nginx config (optional)
-# COPY nginx.conf /etc/nginx/nginx.conf
 
 # Expose port 80
 EXPOSE 80
